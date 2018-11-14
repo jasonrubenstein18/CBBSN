@@ -158,6 +158,52 @@ Agencies <- read_csv("~/Desktop/CBBSN/CBSN/Agencies.csv")
 
 Exc <- subset(Agencies, Agencies$Agency == "Excel Sports Management")
 
+
+ggwass <- ggplot() + 
+	geom_polygon(data = usa, aes(x=long, y = lat, group = group), fill = "green", color = "orange") + 
+	coord_fixed(1.3)
+ggwass
+
+
+
+labsexc <- data.frame(
+	lon = Exc$Lon,
+	lat = Exc$Lat,
+	names = c("Excel Clients"),
+	stringsAsFactors = FALSE)  
+
+ggwass + 
+	geom_point(data = labsoct, aes(x = Oct$Lon, y = Oct$Lat), color = "gold", size = 2) +
+	geom_point(data = labsoct, aes(x = Oct$Lon, y = Oct$Lat), color = "black", size = 2)
+
+
+
+
+
+
+
+
+##### Current Scout Analysis #####
+Scouts <- read_csv("~/Desktop/CBBSN/CBSN/Scouts.csv")
+
+ggscout <- ggplot() + 
+	geom_polygon(data = usa, aes(x=long, y = lat, group = group), fill = "darkgreen", color = "white") + 
+	coord_fixed(1.3)
+ggscout
+
+
+
+labsscouts <- data.frame(
+	lon = Scouts$Long,
+	lat = Scouts$Lat,
+	names = c("CBBSN Scouts"),
+	stringsAsFactors = FALSE)  
+
+ggscout + 
+	geom_point(data = labsscouts, aes(x = Scouts$Long, y = Scouts$Lat), color = "black", size = 2) +
+	geom_point(data = labsscouts, aes(x = Scouts$Long, y = Scouts$Lat), color = "yellow", size = 2)
+
+
 library(maps)
 library(mapdata)
 library(ggplot2)
@@ -241,49 +287,4 @@ ggplot() + geom_polygon(data = state, aes(x=long, y = lat, group = group),fill=N
                      panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) +
   theme(panel.background = element_rect(fill = 'black')) +
   ggtitle("CBBSN West Coast Coverage") + guides(fill = guide_legend(reverse=TRUE))
-
-
-ggwass <- ggplot() + 
-	geom_polygon(data = usa, aes(x=long, y = lat, group = group), fill = "green", color = "orange") + 
-	coord_fixed(1.3)
-ggwass
-
-
-
-labsexc <- data.frame(
-	lon = Exc$Lon,
-	lat = Exc$Lat,
-	names = c("Excel Clients"),
-	stringsAsFactors = FALSE)  
-
-ggwass + 
-	geom_point(data = labsoct, aes(x = Oct$Lon, y = Oct$Lat), color = "gold", size = 2) +
-	geom_point(data = labsoct, aes(x = Oct$Lon, y = Oct$Lat), color = "black", size = 2)
-
-
-
-
-
-
-
-
-##### Current Scout Analysis #####
-Scouts <- read_csv("~/Desktop/CBBSN/CBSN/Scouts.csv")
-
-ggscout <- ggplot() + 
-	geom_polygon(data = usa, aes(x=long, y = lat, group = group), fill = "darkgreen", color = "white") + 
-	coord_fixed(1.3)
-ggscout
-
-
-
-labsscouts <- data.frame(
-	lon = Scouts$Long,
-	lat = Scouts$Lat,
-	names = c("CBBSN Scouts"),
-	stringsAsFactors = FALSE)  
-
-ggscout + 
-	geom_point(data = labsscouts, aes(x = Scouts$Long, y = Scouts$Lat), color = "black", size = 2) +
-	geom_point(data = labsscouts, aes(x = Scouts$Long, y = Scouts$Lat), color = "yellow", size = 2)
 
