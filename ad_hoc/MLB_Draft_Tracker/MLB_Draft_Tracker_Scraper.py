@@ -48,6 +48,13 @@ def scrape_prospects(year, prospect_lists):
     csv_header = []
 
     csv_cols = OrderedDict()
+    csv_cols['round'] = ['pickRound']
+    csv_cols['pickRound'] = ['pickNumber']
+    csv_cols['pickNumber'] = ['pickNumber']
+    csv_cols['PickValue'] = ['pickValue']
+    csv_cols['MlbRank'] = ['rank']
+    csv_cols['SigningBonus'] = ['signingBonus']
+
     csv_cols['MlbID'] = ['person', 'id']
     csv_cols['PlayerFirst'] = ['person', 'firstName']
     csv_cols['PlayerLast'] = ['person', 'lastName']
@@ -67,13 +74,6 @@ def scrape_prospects(year, prospect_lists):
     csv_cols['SchoolClass'] = ['school', 'schoolClass']
     csv_cols['SchoolCountry'] = ['school', 'country']
     csv_cols['SchoolState'] = ['school', 'state']
-
-    csv_cols['round'] = ['pickRound']
-    csv_cols['pickRound'] = ['pickNumber']
-    csv_cols['pickNumber'] = ['pickNumber']
-    csv_cols['MlbRank'] = ['rank']
-    csv_cols['PickValue'] = ['pickValue']
-    csv_cols['SigningBonus'] = ['signingBonus']
 
     csv_cols['Height'] = ['person', 'height']
     csv_cols['Weight'] = ['person', 'weight']
